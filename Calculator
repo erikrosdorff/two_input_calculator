@@ -1,0 +1,118 @@
+#include <iostream>
+#include <string>
+using namespace std;
+double long add(double long a, double long b);
+double long subtract(double long a, double long b);
+double long multiply(double long a, double long b);
+double long divide (double long a, double long b);
+void showResult(double long, double long, double long);
+
+int main()
+{
+two_nums:    
+long double result, a, b;
+int choice;
+cout << "Give me a number, any number: ";
+cin >> a; 
+cout << "Give me another one: ";
+cin >> b;
+cout << "Your numbers are: " << endl;
+cout << a << endl;
+cout << b << endl;
+
+do {//do {
+    cout << "What would you like to do with two numbers?" << endl;
+    cout << "1) Add" << endl;
+    cout << "2) Subtract" << endl;
+    cout << "3) Multiply" << endl;
+    cout << "4) Divide" << endl;
+    cout << "5) Exit" << endl;
+    cout << "Enter Your Choice:" << endl;
+    cin >> choice;
+
+switch (choice) {
+
+    case 1:
+    cout << "You chose to add " << a << " and " << b << endl;
+    result = add(a, b);
+    cout << "Which is: ";
+    goto equals;
+    break;
+    
+    case 2:
+    cout << "You chose to subtract " << a << " and " << b << endl;
+    result = subtract(a, b);
+    cout << "Which is: ";
+    goto equals;
+    break;
+    
+    case 3:
+    cout << "You chose to multiply " << a << " and " << b << endl;
+    result = multiply(a, b);
+    cout << "Which is: ";
+    goto equals;
+    break;
+    
+    case 4:
+    cout << "You chose to divide " << a << " and " << b << endl;
+
+    if (b != 0){
+    result = divide(a, b);
+    cout << "Which is: ";
+    goto equals;
+    } else {
+        cout << "0! Nice try! ";
+        goto end_loop;
+    }
+    
+    case 5:
+    cout << "Exiting...Goodbye!" << endl;
+    break;
+    
+    default:
+    cout << "Invalid choice. Try again." << endl;
+        }
+    
+    } while (choice !=5);
+
+
+equals: showResult(result, a, b);
+end_loop:
+cout << "Would you like to continue? [Y/N]?" << endl;
+char answer;
+cin >> answer;
+condition: if (answer == 'y' || answer == 'Y') {
+    goto two_nums;
+    } else if (answer == 'n' || answer == 'N'){
+        goto end_condition;
+    } else {
+        cout << "Not a valid entry." << endl << "Goodbye!";
+        cin.clear();
+    }
+    
+end_condition: cout << "Goodbye!";
+cout << endl;
+getchar();
+}
+
+double long add(double long a, double long b)
+{
+    return a + b;
+}
+double long subtract(double long a, double long b)
+{
+    return a - b;
+}
+double long multiply(double long a, double long b)
+{
+    return a * b;
+}
+double long divide (double long a, double long b)
+{
+        return a / b;
+}
+
+void showResult(double long result, double long a, double long b)
+{
+cout << result << endl;
+}
